@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<title>temporery page</title>
+	<style type="text/css">
+	#ti_div	{
+		position:relative;
+		width:100%;
+		background-color:#563d67;
+		padding: 10px;
+	}
+	#title_1{
+		font-size:40px;
+		color:#f64c71;
+		text-align: left;
+		padding:10px;
+		border-width: 5px;
+		border-color:#fff;
+        box-sizing: all;
+	}
+	li{
+		margin-right:30px;
+	}
+	li:hover{
+		color:grey;
+	}
+	</style>
+</head>
+<body>
+<div id="ti_div">
+<h1 id="title_1">Desktop App Store</h1>
+<ul style="position:relative;list-style: none;font-size:25px;color:wheat;display:inline-flex;">
+<li><a>Home</a></li>
+<li><a>Downloads</a></li>
+<li><a>Explore more</a></li>
+</ul>
+</div>
+<div style="padding:20px;font-size:20px;">
+  <form method="post" enctype="multipart/form-data" action="upload">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+  </form>
+  <br><hr>
+  {% for file in data %}
+<a href="download/data/{{file.dup}}">Download {{file.name}} </a><br><hr>
+{% endfor %}
+</div>
+</body>
+</html>
